@@ -2,19 +2,19 @@
   <div class="container">
     <h1>Manufacturers</h1>
     <div class="manufacturers">
-      <manufacturer :manufacturer="manufacturer" v-for="(manufacturer, id) in manufacturers" :key="id"/>
+      <manufacturer-tile :manufacturer="manufacturer" v-for="(manufacturer, id) in manufacturers" :key="id"/>
     </div>
   </div>
 </template>
 
 <script>
-import Manufacturer from './Manufacturer'
+import ManufacturerTile from './ManufacturerTile'
 
 export default {
-  name: 'Manufacturers',
+  name: 'ManufacturerList',
 
   components: {
-    Manufacturer
+    ManufacturerTile
   },
 
   beforeMount () {
@@ -46,5 +46,12 @@ export default {
 </script>
 
 <style scoped>
-
+.manufacturers {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+.manufacturer {
+  height:400px;
+}
 </style>
