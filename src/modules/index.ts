@@ -22,7 +22,7 @@ import { PaymentCashOnDelivery } from './payment-cash-on-delivery';
 import { RawOutputExample } from './raw-output-example'
 import { Magento2CMS } from './magento-2-cms'
 // import { Example } from './module-template'
-
+import { Manufacturers } from './manufacturer'
 // This is how you can extend any of VS modues
 // const extendCartVuex = {
 //   actions: {
@@ -68,6 +68,7 @@ export const registerModules: VueStorefrontModule[] = [
   // Hotjar,
   PaymentBackendMethods,
   PaymentCashOnDelivery,
+  Manufacturers,
   RawOutputExample,
   AmpRenderer/*,
   Example*/
