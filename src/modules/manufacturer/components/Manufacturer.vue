@@ -1,7 +1,6 @@
 <template>
   <div>
-    Manufacturer
-    {{ manufacturer.name }}
+    Manufacturer {{ manufacturer.name }}
   </div>
 </template>
 

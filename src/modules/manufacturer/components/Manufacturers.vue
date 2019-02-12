@@ -2,7 +2,7 @@
   <div class="container">
     <h1>Manufacturers</h1>
     <div class="manufacturers">
-      <manufacturer :manufacturer="manufacturer" v-for="(id, manufacturer) in manufacturers" :key="id"/>
+      <manufacturer :manufacturer="manufacturer" v-for="(manufacturer, id) in manufacturers" :key="id"/>
     </div>
   </div>
 </template>
@@ -18,9 +18,13 @@ export default {
   },
 
   beforeMount () {
-    this.$store.dispatch('manufacturer/loadManufacturers').then(res => {
-      this.manufacturers = this.$store.state.manufacturer.manufacturers
-    })
+    this.$store.dispatch('manufacturer/loadManufacturers', 'http://localhost:8080/api/ext/manufacturer/manufacturers')
+      .then(res => {
+        console.log(res)
+        this.manufacturers = this.$store.state.manufacturer.manufacturers
+      }).catch(() => {
+        console.log('load error')
+      })
   },
 
   data () {

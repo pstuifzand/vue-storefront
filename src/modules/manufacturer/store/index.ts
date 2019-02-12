@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch'
+
 const state = {
   manufacturers: []
 }
@@ -8,8 +10,18 @@ const getters = {
 }
 
 const actions = {
-  loadManufacturers(context) {
-    return context.commit('setManufacturers', [{id: 1, name: 'Test'}, {id: 2, name: 'Test 2'}])
+  loadManufacturers(context, url) {
+    return fetch(url, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      mode: 'cors'
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.code === 200) {
+          return context.commit('setManufacturers', data.result.manufacturers)
+        }
+      })
   }
 }
 
